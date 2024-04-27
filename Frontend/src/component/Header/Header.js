@@ -52,7 +52,7 @@ function Header(props) {
           {/* </Link> */}
         </Col>
       </Row>
-      <h1 className="fontClass">Newster News</h1>
+      <h1 className="fontClass">Newster News 2</h1>
     </div>
   );
 }
