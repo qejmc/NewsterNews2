@@ -7,6 +7,7 @@ import "./UserProfilePage.css";
 import { useParams } from "react-router-dom";
 import CheckboxComponent from "./CheckboxComponent";
 import RadioFieldComponent from "./RadioFieldComponent";
+import RecommendationComponent from "./RecommendationToggle.js";
 import axios from "axios";
 
 function UserProfilePage(props) {
@@ -95,6 +96,10 @@ function UserProfilePage(props) {
       <br />
 
       <RadioFieldComponent initialFrequency={userFrequency} />
+
+      <h1> Opt-In for Recommendations </h1>
+      <RecommendationComponent />
+
       <button
         onClick={async () => {
           await registerPreference();
