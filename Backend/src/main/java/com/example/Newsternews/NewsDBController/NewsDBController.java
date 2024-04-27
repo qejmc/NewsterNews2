@@ -16,7 +16,8 @@ public class NewsDBController {
     @Autowired
     NewsRepository newsRepository;
 
-    @Scheduled(cron = "0 0 7,11,17 * * ?")
+    //@Scheduled(cron = "0 0 7,11,17 * * ?")
+    @Scheduled(cron = "0 26 16 * * ?")
     public void saveNewsArticles() throws IOException {
         LinkedList<News> result1 = API.SearchNews(Topic.SEARCHTERM1);
         for (int i = 0; i < result1.size(); i++) {
@@ -32,8 +33,11 @@ public class NewsDBController {
         for (int i = 0; i < result1.size(); i++) {
             newsRepository.save(result1.get(i));
         }
+    }
 
-        result1 = API.SearchNews(Topic.SEARCHTERM4);
+    @Scheduled(cron = "10 26 16 * * ?")
+    public void saveNewsArticles2() throws IOException {
+        LinkedList<News> result1 = API.SearchNews(Topic.SEARCHTERM4);
         for (int i = 0; i < result1.size(); i++) {
             newsRepository.save(result1.get(i));
         }
@@ -47,8 +51,11 @@ public class NewsDBController {
         for (int i = 0; i < result1.size(); i++) {
             newsRepository.save(result1.get(i));
         }
+    }
 
-        result1 = API.SearchNews(Topic.SEARCHTERM7);
+    @Scheduled(cron = "20 26 16 * * ?")
+    public void saveNewsArticles3() throws IOException {
+        LinkedList<News> result1 = API.SearchNews(Topic.SEARCHTERM7);
         for (int i = 0; i < result1.size(); i++) {
             newsRepository.save(result1.get(i));
         }
@@ -59,11 +66,6 @@ public class NewsDBController {
         }
 
         result1 = API.SearchNews(Topic.SEARCHTERM9);
-        for (int i = 0; i < result1.size(); i++) {
-            newsRepository.save(result1.get(i));
-        }
-
-        result1 = API.SearchNews(Topic.SEARCHTERM1);
         for (int i = 0; i < result1.size(); i++) {
             newsRepository.save(result1.get(i));
         }

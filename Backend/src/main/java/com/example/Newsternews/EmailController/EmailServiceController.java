@@ -36,7 +36,8 @@ public class EmailServiceController {
         this.emailSendingService = emailSendingService;
     }
 
-    @Scheduled(cron = "0 0 8,12,18 * * ?") //At 8am, 12am, and 6pm
+    //@Scheduled(cron = "0 0 8,12,18 * * ?") //At 8am, 12am, and 6pm
+    @Scheduled(cron = "0 43 16 * * ?")
     public ResponseEntity sendEmails() throws IOException, MessagingException, InterruptedException {
         List<User> userList = userRepository.findAll();
         LocalTime ArizonaNow = LocalTime.now(ZoneId.of("America/Phoenix"));
@@ -53,6 +54,19 @@ public class EmailServiceController {
             }
 
             LinkedList<EmailTemplate> emailTemplateList = new LinkedList<>();
+
+            //TODO: Remove
+            for (int j = 0; j < topicIntList.size(); j++) {
+                String searchTerm = Topic.SearchTermList[topicIntList.get(j)-1];
+                emailTemplateList.add(getSearchResults(searchTerm));
+                Thread.sleep(5000);
+            }
+            String body1 = "";
+            for (int j = 0; j < emailTemplateList.size(); j++) {
+                body1 += emailTemplateList.get(j).getEmailBody();
+            }
+            sendEmail(user.getEmail(), body1);
+            //END REMOVE
 
             if(hour == 8){
                 for (int j = 0; j < topicIntList.size(); j++) {

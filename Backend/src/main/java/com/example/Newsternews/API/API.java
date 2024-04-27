@@ -101,7 +101,13 @@ public class API
             //Parse the json
             name = jobject.get("name").getAsString();
             url = jobject.get("url").getAsString();
-            description = jobject.get("description").getAsString().substring(0, 100) + "...";
+            description = jobject.get("description").getAsString();
+
+            // Ensure the description is not too short
+            if(description.length() > 100)
+            {
+                description = description.substring(0, 100) + "...";
+            }
 
             //Get the local date and time
             LocalTime ArizonaNow = LocalTime.now(ZoneId.of("America/Phoenix"));
@@ -109,6 +115,8 @@ public class API
 
             //Create a News object for each article
             newsArticle = new News(name, Date, url, topic, description);
+
+            System.out.println("Added article for Topic: " + topic);
 
             //Add the News object to the articles linked list
             articles.add(newsArticle);
