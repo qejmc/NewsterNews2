@@ -4,8 +4,8 @@ function Footer(props) {
   return (
     <div>
       <p>This product was created by The Fellaz.</p>
-      <p>Version no. 0.1</p>
-      <a href="https://github.com/TheFellaz/Newstr-News">Github Link</a>
+      <p>Version no. 0.2</p>
+      <a href="https://github.com/qejmc/NewsterNews2">Github Link</a>
     </div>
   );
 }

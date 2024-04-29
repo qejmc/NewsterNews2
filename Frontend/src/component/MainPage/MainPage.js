@@ -9,7 +9,6 @@ function MainPage(props) {
   return (
     <div>
       <div className="InfoClass">{aboutInfo}</div>
-      <img src="mainPage.png" className="mainPageImg"></img>
       <h1 className="fontClass">Do you want to Join Newster News??</h1>
 
       <br />
