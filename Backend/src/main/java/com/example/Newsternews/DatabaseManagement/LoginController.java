@@ -1,9 +1,7 @@
-package com.example.Newsternews.Login;
+package com.example.Newsternews.DatabaseManagement;
 
 
-import com.example.Newsternews.Resources.User;
 //import org.springframework.data.repository.query.Param;
-import com.example.Newsternews.userRepository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

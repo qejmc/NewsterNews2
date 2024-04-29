@@ -1,4 +1,4 @@
-package com.example.Newsternews.Resources;
+package com.example.Newsternews.EmailManagement;
 
 public class EmailTemplate
 {

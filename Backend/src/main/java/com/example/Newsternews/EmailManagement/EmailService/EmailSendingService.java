@@ -1,4 +1,4 @@
-package com.example.Newsternews.EmailService;
+package com.example.Newsternews.EmailManagement.EmailService;
 
 import javax.mail.MessagingException;
 

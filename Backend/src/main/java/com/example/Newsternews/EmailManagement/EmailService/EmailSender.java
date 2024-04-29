@@ -1,19 +1,19 @@
-package com.example.Newsternews.EmailService.impl;
+package com.example.Newsternews.EmailManagement.EmailService;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import com.example.Newsternews.EmailService.EmailSendingService;
+
 import com.example.Newsternews.Keys.Keys;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EmailSenderIMPL implements EmailSendingService{
+public class EmailSender implements EmailSendingService{
 
     private final JavaMailSender emailSender;
 
-    public EmailSenderIMPL(JavaMailSender emailSender) {
+    public EmailSender(JavaMailSender emailSender) {
         this.emailSender = emailSender;
     }
 

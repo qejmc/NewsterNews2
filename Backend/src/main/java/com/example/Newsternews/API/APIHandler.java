@@ -1,8 +1,8 @@
 package com.example.Newsternews.API;
 
 import com.example.Newsternews.Keys.Keys;
-import com.example.Newsternews.Resources.News;
-import com.example.Newsternews.Resources.Topic;
+import com.example.Newsternews.DatabaseManagement.News;
+import com.example.Newsternews.DatabaseManagement.Topic;
 import com.google.gson.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,15 +13,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalTime;
 import java.time.ZoneId;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 @RestController
 @RequestMapping("/wawa")
-public class API
+public class APIHandler
 {
     //Raw JSON Response
     private static String JSONResponse;
@@ -46,10 +46,7 @@ public class API
 
         // receive the JSON body
         InputStream stream = connection.getInputStream();
-        String response = new Scanner(stream).useDelimiter("\\A").next();
-
-        // construct result object for return
-        Outbox results = new Outbox(new HashMap<String, String>(), response);
+        String response = new Scanner(stream, StandardCharsets.UTF_8).useDelimiter("\\A").next();
 
         stream.close();
 

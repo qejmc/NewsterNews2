@@ -1,7 +1,6 @@
-package com.example.Newsternews.userRepository;
+package com.example.Newsternews.DatabaseManagement;
 
 
-import com.example.Newsternews.Resources.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

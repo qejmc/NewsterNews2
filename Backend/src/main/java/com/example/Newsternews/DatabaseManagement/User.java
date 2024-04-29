@@ -1,10 +1,8 @@
-package com.example.Newsternews.Resources;
+package com.example.Newsternews.DatabaseManagement;
 
-import com.google.gson.Gson;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 
 @ToString
 @Getter
@@ -34,58 +32,6 @@ public class User {
         this.pw = pw;
     }
 
-    public User(RegisterUser regUser){
-        Gson gsonObj = new Gson();
-        ArrayList<Integer> topicsArray = new ArrayList<>();
-
-        this.userName = regUser.getUserName();
-        this.email = regUser.getEmail();
-        this.pw = regUser.getPw();
-        this.token = regUser.getToken();
-
-        if(regUser.Business){
-            topicsArray.add(1);
-        }
-        if(regUser.Entertainment_MovieAndTV){
-            topicsArray.add(2);
-        }
-        if(regUser.Entertainment_Music){
-            topicsArray.add(3);
-        }
-        if(regUser.Politics){
-            topicsArray.add(4);
-        }
-        if(regUser.ScienceAndTechnology){
-            topicsArray.add(5);
-        }
-        if(regUser.Sports_NBA){
-            topicsArray.add(6);
-        }
-        if(regUser.Sports_NFL){
-            topicsArray.add(7);
-        }
-        if(regUser.US){
-            topicsArray.add(8);
-        }
-        if(regUser.World){
-            topicsArray.add(9);
-        }
-        String strTopics = "";
-        for (int i = 0; i < topicsArray.size(); i++) {
-            String tmp = topicsArray.get(i).toString();
-            if(i != topicsArray.size()-1){
-                strTopics += tmp + " ";
-            }else{
-                strTopics += tmp;
-            }
-        }
-
-        this.topics = strTopics;
-
-        this.frequency = regUser.getFrequency();
-
-
-    }
     @Column(name="USER_NAME", nullable = false)
     private String userName;
 

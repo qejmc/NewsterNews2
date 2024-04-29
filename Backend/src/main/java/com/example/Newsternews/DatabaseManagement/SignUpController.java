@@ -1,8 +1,5 @@
-package com.example.Newsternews.SignUpController;
+package com.example.Newsternews.DatabaseManagement;
 
-import com.example.Newsternews.Resources.User;
-import com.example.Newsternews.Resources.token;
-import com.example.Newsternews.userRepository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,7 +18,7 @@ public class SignUpController {
     public ResponseEntity<String> signUp(@RequestBody User userData){
         HttpHeaders headers = new HttpHeaders();
         String responseString = "";
-        token TokenCreator = new token();
+        Token TokenCreator = new Token();
         String newToken = TokenCreator.createToken(userData.getEmail()+userData.getUserName());
         User newUser = new User(userData.getUserName(), userData.getEmail(), userData.getPw());
         newUser.setToken(newToken);

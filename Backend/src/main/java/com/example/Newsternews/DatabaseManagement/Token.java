@@ -1,10 +1,10 @@
-package com.example.Newsternews.Resources;
+package com.example.Newsternews.DatabaseManagement;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class token {
+public class Token {
     public static String createToken(String input) {
         try {
             MessageDigest type = MessageDigest.getInstance("SHA-1");

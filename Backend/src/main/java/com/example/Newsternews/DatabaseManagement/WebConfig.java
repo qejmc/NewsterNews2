@@ -1,12 +1,11 @@
-package com.example.Newsternews.WebConfig;
+package com.example.Newsternews.DatabaseManagement;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class Webconfig implements WebMvcConfigurer {
+public class WebConfig implements WebMvcConfigurer {
 
     // Fix CORS Error
     @Override

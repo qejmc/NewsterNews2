@@ -1,6 +1,5 @@
-package com.example.Newsternews.UserPage;
+package com.example.Newsternews.DatabaseManagement;
 
-import com.example.Newsternews.Resources.User;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -9,9 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.example.Newsternews.userRepository.UserRepository;
-
-import java.util.ArrayList;
 
 @RestController
 public class UserPageController {
