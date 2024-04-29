@@ -6,7 +6,6 @@ import "./UserProfilePage.css";
 import { useParams } from "react-router-dom";
 import CheckboxComponent from "./CheckboxComponent";
 import RadioFieldComponent from "./RadioFieldComponent";
-import RecommendationComponent from "./RecommendationToggle.js";
 import { OptInList } from "../../utils/RecOptIn.js";
 import CheckboxRec from "./OptInCheckbox.js";
 import axios from "axios";
