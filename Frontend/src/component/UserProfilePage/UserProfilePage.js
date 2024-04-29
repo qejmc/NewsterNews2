@@ -1,12 +1,14 @@
 import React from "react";
 import useState from "react";
-//import axios from "axios";
 import { TOPICS } from "../../utils/TopicList";
 import { RegisterUserInfoBtn } from "../../utils/Buttons/Buttons.js";
 import "./UserProfilePage.css";
 import { useParams } from "react-router-dom";
 import CheckboxComponent from "./CheckboxComponent";
 import RadioFieldComponent from "./RadioFieldComponent";
+import RecommendationComponent from "./RecommendationToggle.js";
+import { OptInList } from "../../utils/RecOptIn.js";
+import CheckboxRec from "./OptInCheckbox.js";
 import axios from "axios";
 
 function UserProfilePage(props) {
@@ -33,9 +35,32 @@ function UserProfilePage(props) {
     return freq;
   }
 
+  function checkTopic() {
+    const testElements = document.getElementsByClassName("recOption");
+    let topicsList = "";
+    for (let i = 0; i < testElements.length; i++) {
+      if (testElements[i].checked) {
+        topicsList += i + 1 + " ";
+      }
+    }
+    return topicsList;
+  }
+
+  function checkOptIn() {
+    const testElements = document.getElementsByClassName("prefOption");
+    let PrefList = "";
+    for (let i = 0; i < testElements.length; i++) {
+      if (testElements[i].checked) {
+        PrefList += i + 1 + " ";
+      }
+    }
+    return PrefList;
+  }
+
   async function registerPreference() {
     let topicsList = checkTopic();
     let freq = checkFreq();
+    let rec = checkOptIn();
     // console.log(topicsList);
     // console.log(freq);
     let registerInfoRequest = await axios.post(
@@ -44,6 +69,7 @@ function UserProfilePage(props) {
         token: localStorage.getItem("token"),
         topics: topicsList,
         frequency: freq,
+       recommendation: rec,
       }
     );
     if (registerInfoRequest.data.Correct === "Yes") {
@@ -51,6 +77,7 @@ function UserProfilePage(props) {
     }
     localStorage.setItem("userTopics", topicsList);
     localStorage.setItem("userFrequency", freq);
+   // localStorage.setItem("RecommendationOptIn", rec);
   }
 
   let userName = useParams().id;
@@ -61,6 +88,7 @@ function UserProfilePage(props) {
   //verify token and username
   let userTopicsList = [];
   let userFrequency = 1;
+  let userRecList = [];
   if (localStorage.getItem("userTopics") != null) {
     let userStrList = localStorage.getItem("userTopics").trim().split(" ");
     console.log(userStrList);
@@ -90,11 +118,28 @@ function UserProfilePage(props) {
           return <CheckboxComponent {...info} />;
         })}
       </div>
-
-      <br />
+      
       <br />
 
       <RadioFieldComponent initialFrequency={userFrequency} />
+
+      <br /> 
+
+      <div id="optListID">
+        <h1> Opt-In for Recommendations </h1>
+        <p> Opting in for our recommendation subscription allows you to recieve news articles tailored to your interests.</p>
+        {OptInList.map((prefName, prefIndex) => {
+          let info = {
+            prefName,
+            prefIndex,
+            userRecList,
+          };
+          return <CheckboxRec {...info} />;
+        })}
+      </div>
+      
+
+
       <button
         onClick={async () => {
           await registerPreference();
