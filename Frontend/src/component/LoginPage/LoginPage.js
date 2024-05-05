@@ -85,7 +85,10 @@ function LoginPage(props) {
           onClick={async () => {
             let email = document.getElementById("idField").value;
             let pw = document.getElementById("pwField").value;
-            await logIn(email, pw);
+            const loginSuccessful = await logIn(email, pw);
+            if (loginSuccessful) {
+              window.location.href = "/user";
+            }
           }}
         >
           Login now
