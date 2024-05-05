@@ -48,6 +48,9 @@ public class User {
     @Column(name = "USER_TOKEN", nullable = true)
     private String token = null;
 
+    @Column(name = "USER_OPTIN", nullable = true)
+    private int optIn = 0;
+
     public User() {
 
     }
@@ -61,6 +64,7 @@ public class User {
                 ", topics='" + topics + '\'' +
                 ", frequency=" + frequency +
                 ", token='" + token + '\'' +
+                ", optIn='" + optIn + '\'' +
                 '}';
     }
 
@@ -110,5 +114,13 @@ public class User {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public int getOptIn() {
+        return optIn;
+    }
+
+    public void setOptIn(int optIn) {
+        this.optIn = optIn;
     }
 }

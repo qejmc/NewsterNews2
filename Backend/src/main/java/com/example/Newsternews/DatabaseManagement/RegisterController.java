@@ -19,6 +19,8 @@ public class RegisterController {
         System.out.println(userData.toString());
         User requestUser = userRepository.findByToken(userData.getToken());
 
+        System.out.println(requestUser);
+
         System.out.println(userData.getEmail());
         System.out.println(userData.getToken());
         System.out.println(userData.getFrequency());
@@ -26,6 +28,7 @@ public class RegisterController {
 
         requestUser.setFrequency(userData.getFrequency());
         requestUser.setTopics(userData.getTopics());
+        requestUser.setOptIn(userData.getOptIn());
 
         userRepository.save(requestUser);
         HttpHeaders headers = new HttpHeaders();
