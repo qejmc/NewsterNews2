@@ -15,15 +15,18 @@ async function getUser() {
 
   console.log(response.data.topics);
   let topicList = [];
+  let opt_in = [];
   let topicStrList = response.data.topics.split(" ");
   for (let i = 0; i < topicStrList.length; i++) {
     topicList.push(parseInt(topicStrList[i]));
   }
   console.log(topicList);
   console.log(response.data.freq);
+  console.log(`Opt-in checkbox is ${optIn ? 'checked' : 'not checked'}`);
   let userObject = {
     topics: topicList,
     frequency: response.data.freq,
+    optIn: optIn,
   };
   return userObject;
 }
@@ -85,7 +88,10 @@ function LoginPage(props) {
           onClick={async () => {
             let email = document.getElementById("idField").value;
             let pw = document.getElementById("pwField").value;
-            await logIn(email, pw);
+            const loginSuccessful = await logIn(email, pw);
+            if (loginSuccessful) {
+              window.location.href = "/user";
+            }
           }}
         >
           Login now

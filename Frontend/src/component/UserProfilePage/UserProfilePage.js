@@ -34,17 +34,6 @@ function UserProfilePage(props) {
     return freq;
   }
 
-  function checkTopic() {
-    const testElements = document.getElementsByClassName("recOption");
-    let topicsList = "";
-    for (let i = 0; i < testElements.length; i++) {
-      if (testElements[i].checked) {
-        topicsList += i + 1 + " ";
-      }
-    }
-    return topicsList;
-  }
-
   function checkOptIn() {
     const testElements = document.getElementsByClassName("prefOption");
     let PrefList = "";
