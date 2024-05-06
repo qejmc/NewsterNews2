@@ -38,8 +38,8 @@ public class EmailServiceController {
         this.emailSendingService = emailSendingService;
     }
 
-    //@Scheduled(cron = "0 0 8,12,18 * * ?") //At 8am, 12am, and 6pm
-    @Scheduled(cron = "0 19,20 20 * * ?")
+    @Scheduled(cron = "0 0 8,12,18 * * ?") //At 8am, 12pm, and 6pm
+    //@Scheduled(cron = "0 19,20 20 * * ?")
     public ResponseEntity sendNewsEmails() throws IOException, MessagingException, InterruptedException {
         List<User> userList = userRepository.findAll();
         LocalTime ArizonaNow = LocalTime.now(ZoneId.of("America/Phoenix"));
@@ -55,65 +55,66 @@ public class EmailServiceController {
                 topicIntList.add(Integer.parseInt(topicStrList[j]));
             }
 
-            LinkedList<EmailTemplate> emailTemplateList = new LinkedList<>();
-
-            //TODO: Remove
-            for (int j = 0; j < topicIntList.size(); j++) {
-                String searchTerm = Topic.SearchTermList[topicIntList.get(j)-1];
-                emailTemplateList.add(getSearchResults(searchTerm));
-                Thread.sleep(5000);
-            }
-            String body1 = "";
-            for (int j = 0; j < emailTemplateList.size(); j++) {
-                body1 += emailTemplateList.get(j).getEmailBody();
-            }
-
-            Random random = new Random();
-
-            int random_int = random.nextInt(3);
-
-            String emailSubject = getNewsEmailSubject(emailTemplateList.get(random_int));
-
-            sendEmail(user.getEmail(), emailSubject, body1);
-            //END REMOVE
+            LinkedList<EmailTemplate> EmailTemplateList = new LinkedList<>();
 
             if(hour == 8){
                 for (int j = 0; j < topicIntList.size(); j++) {
                     String searchTerm = Topic.SearchTermList[topicIntList.get(j)-1];
-                    emailTemplateList.add(getSearchResults(searchTerm));
+                    EmailTemplateList.add(getSearchResults(searchTerm));
                     Thread.sleep(5000);
                 }
-                String body = "";
-                for (int j = 0; j < emailTemplateList.size(); j++) {
-                    body += emailTemplateList.get(j).getEmailBody();
+                String body1 = "";
+                for (int j = 0; j < EmailTemplateList.size(); j++) {
+                    body1 += EmailTemplateList.get(j).getEmailBody();
                 }
-                sendEmail(user.getEmail(), "Newster News - Check out the Latest News", body);
+
+                Random random = new Random();
+
+                int random_int = random.nextInt(3);
+
+                String emailSubject = getNewsEmailSubject(EmailTemplateList.get(random_int));
+
+                sendEmail(user.getEmail(), emailSubject, body1);
 
             }else if(hour == 18){
                 if(frequency != 1){
                     for (int j = 0; j < topicIntList.size(); j++) {
                         String searchTerm = Topic.SearchTermList[topicIntList.get(j)-1];
-                        emailTemplateList.add(getSearchResults(searchTerm));
+                        EmailTemplateList.add(getSearchResults(searchTerm));
                         Thread.sleep(5000);
                     }
-                    String body = "";
-                    for (int j = 0; j < emailTemplateList.size(); j++) {
-                        body += emailTemplateList.get(j).getEmailBody();
+                    String body1 = "";
+                    for (int j = 0; j < EmailTemplateList.size(); j++) {
+                        body1 += EmailTemplateList.get(j).getEmailBody();
                     }
-                    sendEmail(user.getEmail(), "Newster News - Check out the Latest News", body);
+
+                    Random random = new Random();
+
+                    int random_int = random.nextInt(3);
+
+                    String emailSubject = getNewsEmailSubject(EmailTemplateList.get(random_int));
+
+                    sendEmail(user.getEmail(), emailSubject, body1);
                 }
             }else if(hour == 12){ //hour == 12
                 if(frequency == 3){
                     for (int j = 0; j < topicIntList.size(); j++) {
                         String searchTerm = Topic.SearchTermList[topicIntList.get(j)-1];
-                        emailTemplateList.add(getSearchResults(searchTerm));
+                        EmailTemplateList.add(getSearchResults(searchTerm));
                         Thread.sleep(5000);
                     }
-                    String body = "";
-                    for (int j = 0; j < emailTemplateList.size(); j++) {
-                        body += emailTemplateList.get(j).getEmailBody();
+                    String body1 = "";
+                    for (int j = 0; j < EmailTemplateList.size(); j++) {
+                        body1 += EmailTemplateList.get(j).getEmailBody();
                     }
-                    sendEmail(user.getEmail(), "Newster News - Check out the Latest News", body);
+
+                    Random random = new Random();
+
+                    int random_int = random.nextInt(3);
+
+                    String emailSubject = getNewsEmailSubject(EmailTemplateList.get(random_int));
+
+                    sendEmail(user.getEmail(), emailSubject, body1);
                 }
             }
         }

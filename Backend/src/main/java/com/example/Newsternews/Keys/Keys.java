@@ -16,6 +16,9 @@ public class Keys {
     public static String EMAIL_HEADER = "<h1>Newster News</h1>" +
             "<a>Thank you for subscribing to Newster News. View the latest articles below picked just for you!</a>";
 
+    public static String RECOMMENDATION_EMAIL_HEADER = "<h1>Newster News</h1>" +
+            "<a>Thank you for subscribing to Newster News. Interested in these articles? Add these topics to your preferences at newsternews.com!</a>";
+
     //Number of Articles to return
     public static int COUNT = 10;
 

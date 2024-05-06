@@ -19,8 +19,8 @@ public class NewsDBController {
     Better than sleeping anyways...
      */
 
-    //@Scheduled(cron = "0 0 7,11,17 * * ?")
-    @Scheduled(cron = "0 49 19 * * ?")
+    @Scheduled(cron = "0 0 7,11,17 * * ?")
+    //@Scheduled(cron = "0 49 19 * * ?")
     public void saveNewsArticles() throws IOException {
         // Delete the old news
         newsRepository.deleteAll();
@@ -41,8 +41,8 @@ public class NewsDBController {
         }
     }
 
-    //@Scheduled(cron = "10 0 7,11,17 * * ?")
-    @Scheduled(cron = "10 49 19 * * ?")
+    @Scheduled(cron = "10 0 7,11,17 * * ?")
+    //@Scheduled(cron = "10 49 19 * * ?")
     public void saveNewsArticles2() throws IOException {
         LinkedList<News> result1 = APIHandler.SearchNews(Topic.SEARCHTERM4);
         for (int i = 0; i < result1.size(); i++) {
@@ -60,8 +60,8 @@ public class NewsDBController {
         }
     }
 
-    //@Scheduled(cron = "20 0 7,11,17 * * ?")
-    @Scheduled(cron = "20 49 19 * * ?")
+    @Scheduled(cron = "20 0 7,11,17 * * ?")
+    //@Scheduled(cron = "20 49 19 * * ?")
     public void saveNewsArticles3() throws IOException {
         LinkedList<News> result1 = APIHandler.SearchNews(Topic.SEARCHTERM7);
         for (int i = 0; i < result1.size(); i++) {
