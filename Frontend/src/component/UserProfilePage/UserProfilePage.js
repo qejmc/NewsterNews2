@@ -36,13 +36,16 @@ function UserProfilePage(props) {
 
   function checkOptIn() {
     const testElements = document.getElementsByClassName("prefOption");
-    let PrefList = "";
-    for (let i = 0; i < testElements.length; i++) {
-      if (testElements[i].checked) {
-        PrefList += i + 1 + " ";
+    if (testElements.length === 1) {
+      return testElements[0].checked ? 1 : 0;
+    } else {
+      let PrefList = [];
+      for (let i = 0; i < testElements.length; i++) {
+        if (testElements[i].checked) {
+          PrefList.push(i + 1);
+        }
       }
-    }
-    return PrefList;
+      return PrefList;
   }
 
   async function registerPreference() {
@@ -57,7 +60,7 @@ function UserProfilePage(props) {
         token: localStorage.getItem("token"),
         topics: topicsList,
         frequency: freq,
-       recommendation: rec,
+        recommendation: rec,
       }
     );
     if (registerInfoRequest.data.Correct === "Yes") {
@@ -65,7 +68,7 @@ function UserProfilePage(props) {
     }
     localStorage.setItem("userTopics", topicsList);
     localStorage.setItem("userFrequency", freq);
-   // localStorage.setItem("RecommendationOptIn", rec);
+    localStorage.setItem("RecommendationOptIn", rec);
   }
 
   let userName = useParams().id;
