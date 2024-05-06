@@ -46,26 +46,6 @@ function CheckboxRec(props) {
         <br />
       </>
     );
-  } else {
-    return (
-      <>
-        <input
-          className="prefOption"
-          id={prefName}
-          type="checkbox"
-          name={prefIndex}
-          value="true"
-          checked={isChecked}
-          onChange={(e) => {
-            setIsChecked(!isChecked);
-            //e.target._valueTracker.setValue(!isChecked);
-            console.log(prefName, e.target._valueTracker.getValue());
-          }}
-        ></input>
-        <label htmlFor={prefName}>{prefName}</label>
-        <br />
-      </>
-    );
   }
 }
 
