@@ -7,9 +7,9 @@ function CheckboxRec(props) {
   let userRecList = props.userRecList;
   const [isChecked, setIsChecked] = useState(false);
 
-  const handleChange = (e) => {
-    setIsChecked(e.target.checked);
-    console.log(prefName, e.target.checked);
+  const handleChange = () => {
+    setIsChecked(!isChecked);
+    console.log(isChecked);
   };
 
   let tmpList = userRecList;
@@ -24,7 +24,11 @@ function CheckboxRec(props) {
           name={prefIndex}
           value="true"
           checked={!isChecked}
-          onChange={handleChange}
+          onChange={(e) => {
+            setIsChecked(!isChecked);
+            //e.target._valueTracker.setValue(isChecked);
+            console.log(prefName, e.target._valueTracker.getValue());
+          }}
         ></input>
         <label htmlFor={prefName}>{prefName}</label>
         <br />
@@ -40,7 +44,11 @@ function CheckboxRec(props) {
           name={prefIndex}
           value="true"
           checked={isChecked}
-          onChange={handleChange}
+          onChange={(e) => {
+            setIsChecked(!isChecked);
+            //e.target._valueTracker.setValue(!isChecked);
+            console.log(prefName, e.target._valueTracker.getValue());
+          }}
         ></input>
         <label htmlFor={prefName}>{prefName}</label>
         <br />

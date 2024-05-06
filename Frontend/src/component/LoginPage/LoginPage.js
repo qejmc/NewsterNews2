@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 //import { res, validate } from "react-email-validator";
-import "./LoginPage.css";
+import "../main.css";
 import verifyEmailFormat from "../../utils/EmailUtil";
 
 async function getUser() {
@@ -15,18 +15,15 @@ async function getUser() {
 
   console.log(response.data.topics);
   let topicList = [];
-  let opt_in = response.data.opt_in ? 1 : 0;
   let topicStrList = response.data.topics.split(" ");
   for (let i = 0; i < topicStrList.length; i++) {
     topicList.push(parseInt(topicStrList[i]));
   }
   console.log(topicList);
   console.log(response.data.freq);
-  console.log(`Opt-in checkbox is ${opt_in ? 'checked' : 'not checked'}`);
   let userObject = {
     topics: topicList,
     frequency: response.data.freq,
-    optIn: opt_in,
   };
   return userObject;
 }
@@ -88,10 +85,7 @@ function LoginPage(props) {
           onClick={async () => {
             let email = document.getElementById("idField").value;
             let pw = document.getElementById("pwField").value;
-            const loginSuccessful = await logIn(email, pw);
-            if (loginSuccessful) {
-              window.location.href = "/user";
-            }
+            await logIn(email, pw);
           }}
         >
           Login now

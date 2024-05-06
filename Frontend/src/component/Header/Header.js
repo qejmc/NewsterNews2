@@ -2,7 +2,7 @@ import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import "./Header.css";
+import "../main.css";
 import { BasicBtn, LoginButton, HomeButton } from "../../utils/Buttons/Buttons";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
@@ -52,7 +52,7 @@ function Header(props) {
           {/* </Link> */}
         </Col>
       </Row>
-      <h1 className="fontClass">Newster News 2</h1>
+      <h1>Newster News 2</h1>
     </div>
   );
 }
