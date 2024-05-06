@@ -15,7 +15,7 @@ async function getUser() {
 
   console.log(response.data.topics);
   let topicList = [];
-  let opt_in = [];
+  let opt_in = response.data.opt_in ? 1 : 0;
   let topicStrList = response.data.topics.split(" ");
   for (let i = 0; i < topicStrList.length; i++) {
     topicList.push(parseInt(topicStrList[i]));
