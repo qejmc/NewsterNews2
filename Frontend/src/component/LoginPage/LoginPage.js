@@ -22,11 +22,11 @@ async function getUser() {
   }
   console.log(topicList);
   console.log(response.data.freq);
-  console.log(`Opt-in checkbox is ${optIn ? 'checked' : 'not checked'}`);
+  console.log(`Opt-in checkbox is ${opt_in ? 'checked' : 'not checked'}`);
   let userObject = {
     topics: topicList,
     frequency: response.data.freq,
-    optIn: optIn,
+    optIn: opt_in,
   };
   return userObject;
 }
