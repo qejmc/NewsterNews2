@@ -2,7 +2,7 @@ import React from "react";
 import useState from "react";
 import { TOPICS } from "../../utils/TopicList";
 import { RegisterUserInfoBtn } from "../../utils/Buttons/Buttons.js";
-import "./UserProfilePage.css";
+import "../main.css";
 import { useParams } from "react-router-dom";
 import CheckboxComponent from "./CheckboxComponent";
 import RadioFieldComponent from "./RadioFieldComponent";
@@ -34,19 +34,26 @@ function UserProfilePage(props) {
     return freq;
   }
 
+  function checkTopic() {
+    const testElements = document.getElementsByClassName("recOption");
+    let topicsList = "";
+    for (let i = 0; i < testElements.length; i++) {
+      if (testElements[i].checked) {
+        topicsList += i + 1 + " ";
+      }
+    }
+    return topicsList;
+  }
+
   function checkOptIn() {
     const testElements = document.getElementsByClassName("prefOption");
-    let optIn = "";
-
-    if (testElements[0].checked) {
-        optIn = 1;
+    let PrefList = "";
+    for (let i = 0; i < testElements.length; i++) {
+      if (testElements[i].checked) {
+        PrefList += i + 1 + " ";
+      }
     }
-    else
-    {
-        optIn = 0;
-    }
-
-    return optIn;
+    return PrefList;
   }
 
   async function registerPreference() {
@@ -61,7 +68,7 @@ function UserProfilePage(props) {
         token: localStorage.getItem("token"),
         topics: topicsList,
         frequency: freq,
-        optIn: rec
+       recommendation: rec,
       }
     );
     if (registerInfoRequest.data.Correct === "Yes") {
@@ -69,7 +76,7 @@ function UserProfilePage(props) {
     }
     localStorage.setItem("userTopics", topicsList);
     localStorage.setItem("userFrequency", freq);
-    localStorage.setItem("RecommendationOptIn", rec);
+   // localStorage.setItem("RecommendationOptIn", rec);
   }
 
   let userName = useParams().id;
@@ -80,7 +87,7 @@ function UserProfilePage(props) {
   //verify token and username
   let userTopicsList = [];
   let userFrequency = 1;
-  let userRecList = 0;
+  let userRecList = [];
   if (localStorage.getItem("userTopics") != null) {
     let userStrList = localStorage.getItem("userTopics").trim().split(" ");
     console.log(userStrList);
@@ -90,9 +97,6 @@ function UserProfilePage(props) {
   }
   if (localStorage.getItem("userFrequency") != null) {
     userFrequency = localStorage.getItem("userFrequency");
-  }
-  if (localStorage.getItem("RecommendationOptIn") != null) {
-    userRecList = localStorage.getItem("RecommendationOptIn");
   }
 
   return (

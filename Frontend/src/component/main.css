@@ -1,0 +1,43 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url(fonts/BebasNeue-Regular.ttf);
+}
+
+.button {
+  width: 100%;
+  background-color:#AC87C5;
+}
+
+h1 {
+  color: #AC87C5;
+  font-family: myFirstFont;
+}
+
+h2 {
+  color: #AC87C5;
+  font-family: myFirstFont;
+}
+
+.loginBtnId{
+ background-color:#756AB6;
+ font-style: normal;
+}
+
+.btnName{
+ color:#756AB6;
+ font-style: normal;
+
+}
+
+button {
+  background-color: #4caf50; /* Green */
+  border: 10px;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 10px;
+  cursor: pointer;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import "./MainPage.css";
+import "../main.css";
 import { Link } from "react-router-dom";
 import { BasicBtn } from "../../utils/Buttons/Buttons";
 
@@ -9,7 +9,7 @@ function MainPage(props) {
   return (
     <div>
       <div className="InfoClass">{aboutInfo}</div>
-      <h1 className="fontClass">Do you want to Join Newster News??</h1>
+      <h1 >Do you want to Join Newster News??</h1>
 
       <br />
       <br />
