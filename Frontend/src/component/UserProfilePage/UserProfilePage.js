@@ -36,13 +36,17 @@ function UserProfilePage(props) {
 
   function checkOptIn() {
     const testElements = document.getElementsByClassName("prefOption");
-    let PrefList = [];
-    for (let i = 0; i < testElements.length; i++) {
-      if (testElements[i].checked) {
-        PrefList.push(i + 1);
-      }
+    let optIn = "";
+
+    if (testElements[0].checked) {
+        optIn = 1;
     }
-    return PrefList;
+    else
+    {
+        optIn = 0;
+    }
+
+    return optIn;
   }
 
   async function registerPreference() {
@@ -57,7 +61,7 @@ function UserProfilePage(props) {
         token: localStorage.getItem("token"),
         topics: topicsList,
         frequency: freq,
-       recommendation: rec,
+        optIn: rec
       }
     );
     if (registerInfoRequest.data.Correct === "Yes") {
@@ -76,7 +80,7 @@ function UserProfilePage(props) {
   //verify token and username
   let userTopicsList = [];
   let userFrequency = 1;
-  let userRecList = [];
+  let userRecList = 0;
   if (localStorage.getItem("userTopics") != null) {
     let userStrList = localStorage.getItem("userTopics").trim().split(" ");
     console.log(userStrList);
@@ -86,6 +90,9 @@ function UserProfilePage(props) {
   }
   if (localStorage.getItem("userFrequency") != null) {
     userFrequency = localStorage.getItem("userFrequency");
+  }
+  if (localStorage.getItem("RecommendationOptIn") != null) {
+    userRecList = localStorage.getItem("RecommendationOptIn");
   }
 
   return (
