@@ -40,11 +40,7 @@ function CheckboxRec(props) {
           name={prefIndex}
           value="true"
           checked={isChecked}
-          onChange={(e) => {
-            setIsChecked(!isChecked);
-            //e.target._valueTracker.setValue(!isChecked);
-            console.log(prefName, e.target._valueTracker.getValue());
-          }}
+          onChange={handleChange}
         ></input>
         <label htmlFor={prefName}>{prefName}</label>
         <br />
