@@ -25,6 +25,7 @@ public class RegisterController {
         System.out.println(userData.getToken());
         System.out.println(userData.getFrequency());
         System.out.println(userData.getTopics());
+        System.out.println(userData.getOptIn());
 
         requestUser.setFrequency(userData.getFrequency());
         requestUser.setTopics(userData.getTopics());

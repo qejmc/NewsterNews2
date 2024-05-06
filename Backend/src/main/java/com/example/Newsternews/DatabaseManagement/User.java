@@ -64,7 +64,7 @@ public class User {
                 ", topics='" + topics + '\'' +
                 ", frequency=" + frequency +
                 ", token='" + token + '\'' +
-                ", optIn='" + optIn + '\'' +
+                ", optIn=" + optIn +
                 '}';
     }
 
